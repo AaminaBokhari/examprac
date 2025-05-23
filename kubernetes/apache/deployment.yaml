@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-proxy
+  template:
+    metadata:
+      labels:
+        app: apache-proxy
+    spec:
+      containers:
+      - name: apache-proxy
+        image: yourdockerhub/apache-proxy:latest
+        ports:
+        - containerPort: 80
